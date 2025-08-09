@@ -26,6 +26,10 @@ const config: AppConfig = {
   },
 };
 
+// 디버깅: API URL 확인
+console.log('🔍 Current API Base URL:', config.api.baseUrl);
+console.log('🔍 NEXT_PUBLIC_API_URL env:', process.env.NEXT_PUBLIC_API_URL);
+
 export default config;
 
 export const API_BASE_URL = config.api.baseUrl;
