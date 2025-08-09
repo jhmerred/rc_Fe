@@ -38,7 +38,6 @@ const attachAccessToken = (
 // ✅ 요청 인터셉터
 apiClient.interceptors.request.use(
   (config) => {
-    console.log('🔍 API Request:', config.method?.toUpperCase(), config.url, 'baseURL:', config.baseURL);
     const token = getAccessToken();
     if (token) attachAccessToken(config, token);
     return config;
@@ -79,7 +78,6 @@ apiClient.interceptors.response.use(
       isRefreshing = true;
 
       try {
-        console.log('🔍 Refresh token request URL:', `${API_BASE_URL}/auth/refresh`);
         const res = await apiClient.post(
           '/auth/refresh',
           {},

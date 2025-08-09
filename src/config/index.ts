@@ -14,7 +14,7 @@ interface AppConfig {
 
 const config: AppConfig = {
   api: {
-    baseUrl: 'https://httpbin.org', // SSL 테스트용 임시 URL
+    baseUrl: 'https://test.demodev.io/api/v1',
     timeout: Number(process.env.NEXT_PUBLIC_API_TIMEOUT) || 10000,
   },
   auth: {
@@ -26,9 +26,6 @@ const config: AppConfig = {
   },
 };
 
-// 디버깅: API URL 확인
-console.log('🔍 Current API Base URL:', config.api.baseUrl);
-console.log('🔍 NEXT_PUBLIC_API_URL env:', process.env.NEXT_PUBLIC_API_URL);
 
 export default config;
 
