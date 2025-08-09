@@ -14,7 +14,7 @@ interface AppConfig {
 
 const config: AppConfig = {
   api: {
-    baseUrl: process.env.NEXT_PUBLIC_API_URL || 'https://test.demodev.io/api/v1',
+    baseUrl: 'https://test.demodev.io/api/v1', // 임시 하드코딩으로 테스트
     timeout: Number(process.env.NEXT_PUBLIC_API_TIMEOUT) || 10000,
   },
   auth: {
