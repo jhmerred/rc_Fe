@@ -17,7 +17,7 @@ app/
 
 ### 1. Google OAuth 설정
 Google Cloud Console에서 OAuth 2.0 클라이언트 생성:
-- 승인된 리디렉션 URI: `https://ec2-13-209-6-117.ap-northeast-2.compute.amazonaws.com/api/v1/auth/google/callback`
+- 승인된 리디렉션 URI: `http://localhost:8000/api/v1/auth/google/callback`
 
 ### 2. 환경 변수 설정
 ```bash

@@ -47,6 +47,9 @@ export default function UserTable({ users, onEdit, onDelete }: UserTableProps) {
               역할
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              토큰
+            </th>
+            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
               상태
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -91,6 +94,30 @@ export default function UserTable({ users, onEdit, onDelete }: UserTableProps) {
                 <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getRoleBadgeColor(user.role)}`}>
                   {getRoleText(user.role)}
                 </span>
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap">
+                {user.role === UserRole.ENDUSER && user.enduser_token ? (
+                  <div className="max-w-xs">
+                    <code className="text-xs bg-gray-100 px-2 py-1 rounded break-all">
+                      {user.enduser_token.substring(0, 20)}...
+                    </code>
+                    <button
+                      onClick={() => {
+                        const baseUrl = window.location.origin;
+                        const fullUrl = `${baseUrl}/login/enduser?encrypted_token=${user.enduser_token}`;
+                        navigator.clipboard.writeText(fullUrl);
+                      }}
+                      className="ml-2 text-indigo-600 hover:text-indigo-900"
+                      title="URL 복사"
+                    >
+                      <svg className="h-4 w-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                      </svg>
+                    </button>
+                  </div>
+                ) : (
+                  <span className="text-sm text-gray-400">-</span>
+                )}
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
                 <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
