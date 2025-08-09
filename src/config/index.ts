@@ -14,7 +14,7 @@ interface AppConfig {
 
 const config: AppConfig = {
   api: {
-    baseUrl: 'https://test.demodev.io/api/v1', // 임시 하드코딩으로 테스트
+    baseUrl: 'https://httpbin.org', // SSL 테스트용 임시 URL
     timeout: Number(process.env.NEXT_PUBLIC_API_TIMEOUT) || 10000,
   },
   auth: {
