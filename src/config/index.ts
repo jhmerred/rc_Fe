@@ -14,7 +14,7 @@ interface AppConfig {
 
 const config: AppConfig = {
   api: {
-    baseUrl: process.env.NEXT_PUBLIC_API_URL || 'https://ec2-13-209-6-117.ap-northeast-2.compute.amazonaws.com/api/v1',
+    baseUrl: process.env.NEXT_PUBLIC_API_URL || 'https://n8n.demodev.io/backend-api/v1',
     timeout: Number(process.env.NEXT_PUBLIC_API_TIMEOUT) || 10000,
   },
   auth: {
