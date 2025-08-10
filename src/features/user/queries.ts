@@ -13,7 +13,13 @@ export const useCurrentUser = () => {
     queryKey: queryKeys.user.profile("me"),
     queryFn: () => userApi.getMe(),
     staleTime: 1000 * 60 * 5,
-    retry: false,
+    retry: (failureCount: number, error: any) => {
+      // 401/403 에러면 재시도 안함 (토큰 문제)
+      if (error?.response?.status === 401 || error?.response?.status === 403) {
+        return false;
+      }
+      return failureCount < 3;
+    },
   });
 };
 

@@ -14,6 +14,7 @@ const apiClient = axios.create({
 
 // 🔁 refresh 중복 방지용 상태 및 큐
 let isRefreshing = false;
+let isRedirecting = false; // 리다이렉트 중복 방지
 let failedQueue: Array<{
   resolve: (token: string | null) => void;
   reject: (reason?: unknown) => void;
@@ -94,7 +95,10 @@ apiClient.interceptors.response.use(
       } catch (refreshError) {
         processQueue(refreshError, null);
         clearAccessToken();
-        if (typeof window !== 'undefined') {
+        
+        // 리다이렉트 중복 방지
+        if (typeof window !== 'undefined' && !isRedirecting) {
+          isRedirecting = true;
           window.location.href = '/login';
         }
         return Promise.reject(refreshError);
