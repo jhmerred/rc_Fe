@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import GoogleLoginButton from "@/components/auth/GoogleLoginButton";
-import AuthGuard from "@/components/common/AuthGuard";
 import { API_BASE_URL } from "@/config";
 
 export default function LoginPage() {
@@ -19,8 +18,7 @@ export default function LoginPage() {
   };
 
   return (
-    <AuthGuard requireAuth={false}>
-      <div className="flex min-h-screen flex-col justify-center bg-white">
+    <div className="flex min-h-screen flex-col justify-center bg-white">
       <div className="mx-auto w-full max-w-2xl">
         <div className="rounded-lg px-4 py-8 sm:px-10">
           <div className="mb-8 text-center">
@@ -59,6 +57,5 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
-    </AuthGuard>
   );
 }
