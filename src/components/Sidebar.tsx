@@ -97,7 +97,11 @@ export default function Sidebar() {
         <div className="pb-safe relative flex h-full w-72 flex-col border-r border-gray-200 bg-white p-4">
           {/* Logo/Title and Mobile close button */}
           <div className="mb-4 flex items-center justify-between">
-            <h2 className="text-2xl font-bold">리얼 코칭 로고</h2>
+            <img 
+              src="/icons/RealCoaching_logo.svg" 
+              alt="리얼 코칭" 
+              className="h-8 w-auto"
+            />
             {/* Mobile x button */}
             <button onClick={() => setIsOpen(false)} className="p-2 lg:hidden">
               <svg
